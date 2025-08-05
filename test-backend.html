@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener Backend Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            background: #f8f9fa;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 URL Shortener Backend Test</h1>
+        <p>This page will help you test your backend API endpoints. Make sure your services are running first!</p>
+
+        <div class="test-section">
+            <h3>1. Health Checks</h3>
+            <button onclick="testHealth('gateway')">Test Gateway Health</button>
+            <button onclick="testHealth('urlservice')">Test URL Service Health</button>
+            <div id="health-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>2. URL Shortening Test</h3>
+            <input type="text" id="urlInput" placeholder="Enter URL to shorten" value="https://www.google.com">
+            <button onclick="testShorten()">Shorten URL</button>
+            <button onclick="testShortenDirect()">Test Direct (bypass gateway)</button>
+            <div id="shorten-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>3. Custom Short Code Test</h3>
+            <input type="text" id="customUrlInput" placeholder="Enter URL" value="https://www.github.com">
+            <input type="text" id="customCodeInput" placeholder="Custom code" value="github123">
+            <button onclick="testCustomShorten()">Shorten with Custom Code</button>
+            <div id="custom-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>4. Error Handling Test</h3>
+            <button onclick="testInvalidUrl()">Test Invalid URL</button>
+            <div id="error-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>5. Manual Test</h3>
+            <input type="text" id="manualUrl" placeholder="Enter endpoint URL" value="http://localhost:5000/health">
+            <select id="manualMethod">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select>
+            <button onclick="testManual()">Test Endpoint</button>
+            <div id="manual-result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const gatewayUrl = 'http://localhost:5000';
+        const urlServiceUrl = 'http://localhost:5001';
+
+        function displayResult(elementId, result, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            
+            const statusDiv = document.createElement('div');
+            statusDiv.className = isSuccess ? 'success' : 'error';
+            statusDiv.textContent = isSuccess ? '✅ SUCCESS' : '❌ FAILED';
+            element.appendChild(statusDiv);
+            
+            const resultDiv = document.createElement('div');
+            resultDiv.textContent = typeof result === 'object' ? JSON.stringify(result, null, 2) : result;
+            element.appendChild(resultDiv);
+        }
+
+        async function testHealth(service) {
+            const url = service === 'gateway' ? `${gatewayUrl}/health` : `${urlServiceUrl}/health`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.text();
+                displayResult('health-result', `${service.toUpperCase()} Health: ${response.status}\n${data}`, response.ok);
+            } catch (error) {
+                displayResult('health-result', `${service.toUpperCase()} Error: ${error.message}`, false);
+            }
+        }
+
+        async function testShorten() {
+            const url = document.getElementById('urlInput').value;
+            
+            try {
+                const response = await fetch(`${gatewayUrl}/api/urls/shorten`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        originalUrl: url,
+                        customShortCode: null,
+                        expirationDate: null
+                    })
+                });
+                
+                const data = await response.json();
+                displayResult('shorten-result', `Status: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`, response.ok);
+            } catch (error) {
+                displayResult('shorten-result', `Error: ${error.message}`, false);
+            }
+        }
+
+        async function testShortenDirect() {
+            const url = document.getElementById('urlInput').value;
+            
+            try {
+                const response = await fetch(`${urlServiceUrl}/api/urls/shorten`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        originalUrl: url,
+                        customShortCode: null,
+                        expirationDate: null
+                    })
+                });
+                
+                const data = await response.json();
+                displayResult('shorten-result', `Direct Status: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`, response.ok);
+            } catch (error) {
+                displayResult('shorten-result', `Direct Error: ${error.message}`, false);
+            }
+        }
+
+        async function testCustomShorten() {
+            const url = document.getElementById('customUrlInput').value;
+            const customCode = document.getElementById('customCodeInput').value;
+            
+            try {
+                const response = await fetch(`${gatewayUrl}/api/urls/shorten`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        originalUrl: url,
+                        customShortCode: customCode || null,
+                        expirationDate: null
+                    })
+                });
+                
+                const data = await response.json();
+                displayResult('custom-result', `Status: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`, response.ok);
+            } catch (error) {
+                displayResult('custom-result', `Error: ${error.message}`, false);
+            }
+        }
+
+        async function testInvalidUrl() {
+            try {
+                const response = await fetch(`${gatewayUrl}/api/urls/shorten`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        originalUrl: 'not-a-valid-url',
+                        customShortCode: null,
+                        expirationDate: null
+                    })
+                });
+                
+                const data = await response.json();
+                displayResult('error-result', `Status: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}`, false);
+            } catch (error) {
+                displayResult('error-result', `Error: ${error.message}`, false);
+            }
+        }
+
+        async function testManual() {
+            const url = document.getElementById('manualUrl').value;
+            const method = document.getElementById('manualMethod').value;
+            
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                };
+                
+                if (method === 'POST') {
+                    options.body = JSON.stringify({
+                        originalUrl: 'https://www.example.com',
+                        customShortCode: null,
+                        expirationDate: null
+                    });
+                }
+                
+                const response = await fetch(url, options);
+                const data = await response.text();
+                displayResult('manual-result', `Status: ${response.status}\nResponse: ${data}`, response.ok);
+            } catch (error) {
+                displayResult('manual-result', `Error: ${error.message}`, false);
+            }
+        }
+    </script>
+</body>
+</html>

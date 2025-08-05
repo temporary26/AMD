@@ -150,13 +150,14 @@ public class UrlService : IUrlService
 
     private ShortenedUrlResponse MapToResponse(ShortenedUrl url)
     {
-        var baseUrl = _configuration["BaseUrl"] ?? "http://localhost:5000";
+        // Generate clean, short URLs: http://localhost:5001/{shortCode}
+        var baseUrl = "http://localhost:5001";
         
         return new ShortenedUrlResponse
         {
             ShortCode = url.ShortCode,
             OriginalUrl = url.OriginalUrl,
-            ShortenedUrl = $"{baseUrl}/r/{url.ShortCode}",
+            ShortenedUrl = $"{baseUrl}/{url.ShortCode}",
             CreatedAt = url.CreatedAt,
             ExpirationDate = url.ExpirationDate,
             ClickCount = url.ClickCount

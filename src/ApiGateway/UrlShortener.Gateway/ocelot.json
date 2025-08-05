@@ -108,7 +108,7 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/{shortcode}",
+      "DownstreamPathTemplate": "/api/urls/redirect/{shortcode}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Backend API Test</h1>
+    <button onclick="testAPI()">Test URL Shortening</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/urls/shorten', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        originalUrl: 'https://www.google.com',
+                        customShortCode: null,
+                        expirationDate: null
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <h3>✅ Success!</h3>
+                        <p><strong>Short Code:</strong> ${data.shortCode}</p>
+                        <p><strong>Shortened URL:</strong> ${data.shortenedUrl}</p>
+                        <p><strong>Original URL:</strong> ${data.originalUrl}</p>
+                    `;
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML = `<h3>❌ Error ${response.status}</h3><p>${error}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<h3>❌ Connection Error</h3><p>${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

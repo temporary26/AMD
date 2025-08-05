@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bombardino crocodilo\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {}
+    "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bombardino crocodilo\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {
+    "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bombardino crocodilo\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
         "projectName": "UrlShortener.Contracts",
-        "projectPath": "C:\\Users\\bombardino crocodilo\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
-        "packagesPath": "C:\\Users\\bombardino crocodilo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bombardino crocodilo\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
+        "packagesPath": "C:\\Users\\the paperweight\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bombardino crocodilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\the paperweight\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
