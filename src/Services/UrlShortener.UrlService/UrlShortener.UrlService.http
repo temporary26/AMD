@@ -1,0 +1,38 @@
+### URL Service API Tests
+
+# Test the health endpoint
+GET http://localhost:5001/health
+
+###
+
+# Create a shortened URL
+POST http://localhost:5001/api/urls/shorten
+Content-Type: application/json
+
+{
+  "originalUrl": "https://www.google.com",
+  "customShortCode": null,
+  "expirationDate": null
+}
+
+###
+
+# Create a shortened URL with custom code
+POST http://localhost:5001/api/urls/shorten
+Content-Type: application/json
+
+{
+  "originalUrl": "https://www.github.com",
+  "customShortCode": "github",
+  "expirationDate": null
+}
+
+###
+
+# Get original URL by short code (replace with actual short code)
+GET http://localhost:5001/api/urls/abc123
+
+###
+
+# Test redirect (replace with actual short code)
+GET http://localhost:5001/api/urls/redirect/abc123

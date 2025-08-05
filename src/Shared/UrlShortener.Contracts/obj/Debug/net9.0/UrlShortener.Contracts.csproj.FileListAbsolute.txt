@@ -1,0 +1,12 @@
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\bin\Debug\net9.0\UrlShortener.Contracts.deps.json
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\bin\Debug\net9.0\UrlShortener.Contracts.dll
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\bin\Debug\net9.0\UrlShortener.Contracts.pdb
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.AssemblyInfoInputs.cache
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.AssemblyInfo.cs
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.sourcelink.json
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.dll
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\refint\UrlShortener.Contracts.dll
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\UrlShortener.Contracts.pdb
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Contracts\obj\Debug\net9.0\ref\UrlShortener.Contracts.dll

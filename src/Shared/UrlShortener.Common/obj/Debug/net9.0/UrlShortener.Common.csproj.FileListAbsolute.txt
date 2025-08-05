@@ -1,0 +1,13 @@
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\bin\Debug\net9.0\UrlShortener.Common.deps.json
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\bin\Debug\net9.0\UrlShortener.Common.dll
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\bin\Debug\net9.0\UrlShortener.Common.pdb
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.csproj.AssemblyReference.cache
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.AssemblyInfoInputs.cache
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.AssemblyInfo.cs
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.csproj.CoreCompileInputs.cache
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.sourcelink.json
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.dll
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\refint\UrlShortener.Common.dll
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.pdb
+C:\Users\bombardino crocodilo\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\ref\UrlShortener.Common.dll

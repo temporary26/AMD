@@ -1,6 +1,0 @@
-@UrlShortener.UrlService_HostAddress = http://localhost:5072
-
-GET {{UrlShortener.UrlService_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
