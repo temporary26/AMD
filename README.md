@@ -1,220 +1,142 @@
-# URL Shortener Microservices
+# URL Shortener
 
-A modern, scalable URL shortening service built with .NET 9 using microservices architecture.
+A modern, microservices-based URL shortener application built with .NET 8 and Vue.js.
 
-## Architecture Overview
+## 🚀 Quick Start
+
+### Initial Setup
+```powershell
+.\setup.ps1
+```
+This will install all dependencies and packages automatically.
+
+### Running the Application
+```powershell
+.\start.ps1
+```
+This will build the solution and start all web services.
+
+### Testing the API
+```powershell
+.\test.ps1
+```
+This will run comprehensive API tests to verify everything is working correctly.
+
+## 📋 Prerequisites
+
+### Required Dependencies
+
+1. **[.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)**
+   - Version: 8.0 or later
+
+2. **[Node.js](https://nodejs.org/)**
+   - Version: 18.x or later
+
+3. **[SQL Server LocalDB 2022](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver17)**
+   - Required for data persistence
+
+## 🏗️ Architecture
+
+This application follows a microservices architecture with the following components:
+
+### Services
+- **API Gateway** (Port 5000) - Routes requests to appropriate services
+- **URL Service** (Port 5001) - Core URL shortening functionality
+- **Analytics Service** (Port 5002) - Usage analytics and metrics
+- **User Service** (Port 5003) - User management
+
+### Frontend
+- **Vue.js Application** (Port 3000) - Modern web interface
+
+## 📦 Dependencies
+
+### .NET Packages
+The following packages are automatically restored during setup:
+- Microsoft.EntityFrameworkCore
+- Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Tools
+- Microsoft.AspNetCore.App
+- Ocelot (API Gateway)
+- Microsoft.Extensions.Diagnostics.HealthChecks
+- Swashbuckle.AspNetCore (Swagger)
+
+### Frontend Packages
+The following npm packages are automatically installed:
+- vue@^3.4.0
+- vite@^5.0.0
+- @vitejs/plugin-vue
+- axios
+
+## 🔧 Manual Installation
+
+If the automatic setup fails, you can install dependencies manually:
+
+### Backend
+```powershell
+dotnet restore
+```
+
+### Frontend
+```powershell
+cd frontend
+npm install
+```
+
+## 🌐 Ports
+
+Ensure the following ports are available:
+- **3000** - Frontend (Vue.js)
+- **5000** - API Gateway
+- **5001** - URL Service
+- **5002** - Analytics Service
+- **5003** - User Service
+
+## 🚦 Usage
+
+1. After running `start.ps1`, visit [http://localhost:3000](http://localhost:3000) to access the web interface
+2. Use the API endpoints via the gateway at [http://localhost:5000](http://localhost:5000)
+3. Access Swagger documentation for individual services
+
+## 📁 Project Structure
 
 ```
-UrlShortener.Solution/
 ├── src/
-│   ├── ApiGateway/
-│   │   └── UrlShortener.Gateway/          # API Gateway (Ocelot)
-│   ├── Services/
-│   │   ├── UrlShortener.UrlService/       # URL shortening and retrieval
-│   │   ├── UrlShortener.AnalyticsService/ # Click tracking and analytics
-│   │   └── UrlShortener.UserService/      # User management and authentication
-│   ├── Shared/
-│   │   ├── UrlShortener.Contracts/        # Shared DTOs and contracts
-│   │   └── UrlShortener.Common/           # Common utilities and services
-│   └── Web/
-│       └── UrlShortener.WebApp/           # Web frontend application
-├── tests/                                 # Unit and integration tests
-├── docs/                                  # Documentation
-└── docker-compose.yml                     # Docker orchestration
+│   ├── ApiGateway/           # Ocelot API Gateway
+│   ├── Services/             # Microservices
+│   │   ├── UrlService/       # URL shortening logic
+│   │   ├── AnalyticsService/ # Analytics and metrics
+│   │   └── UserService/      # User management
+│   ├── Shared/               # Common libraries
+│   └── Web/                  # Web application
+├── frontend/                 # Vue.js frontend
+├── scripts/                  # PowerShell automation scripts
+├── setup.ps1                 # Initial setup script
+├── start.ps1                 # Start all services
+└── test.ps1                  # API testing script
 ```
 
-## Services
+## 🔍 Troubleshooting
 
-### 1. API Gateway (Port 5000)
-- **Technology**: Ocelot
-- **Purpose**: Single entry point for all client requests
-- **Features**: Routing, load balancing, rate limiting
+### Setup Issues
+- Check that all prerequisites are installed
+- Verify the required ports are not in use
+- Review `Dependencies.txt` for detailed package information
 
-### 2. URL Service (Port 5001)
-- **Purpose**: Core URL shortening functionality
-- **Features**: 
-  - Create shortened URLs
-  - Retrieve original URLs
-  - Custom short codes
-  - URL validation
+### Service Issues
+- Run `test.ps1` to verify all services are responding
+- Check individual service logs
+- Ensure SQL Server LocalDB is running
 
-### 3. Analytics Service (Port 5002)
-- **Purpose**: Track and analyze URL usage
-- **Features**:
-  - Click tracking
-  - Usage statistics
-  - Geographic analytics
-  - Reporting
+## 🤝 Contributing
 
-### 4. User Service (Port 5003)
-- **Purpose**: User management and authentication
-- **Features**:
-  - User registration/login
-  - JWT token management
-  - User profile management
-  - Role-based access control
+1. Ensure all services pass the test suite (`test.ps1`)
+2. Follow the existing code structure and conventions
+3. Update documentation as needed
 
-### 5. Web Application (Port 5004)
-- **Purpose**: Frontend web interface
-- **Features**:
-  - User-friendly URL shortening interface
-  - Dashboard with analytics
-  - User account management
+## 📄 License
 
-## Shared Libraries
+This project is part of the AMD repository.
 
-### UrlShortener.Contracts
-- DTOs and data contracts shared between services
-- API models and request/response objects
+---
 
-### UrlShortener.Common
-- Shared utilities and helper classes
-- Caching service abstractions
-- Common middleware and extensions
-
-## Getting Started
-
-### Prerequisites
-- .NET 9 SDK
-- Docker Desktop
-- SQL Server (or use Docker)
-- Redis (or use Docker)
-
-### Running with Docker Compose
-
-1. **Clone and navigate to the project:**
-   ```bash
-   cd "c:\Users\bombardino crocodilo\Downloads\AMD"
-   ```
-
-2. **Build and run all services:**
-   ```bash
-   docker-compose up --build
-   ```
-
-3. **Access the applications:**
-   - API Gateway: http://localhost:5000
-   - URL Service: http://localhost:5001
-   - Analytics Service: http://localhost:5002
-   - User Service: http://localhost:5003
-   - Web Application: http://localhost:5004
-
-### Running Locally
-
-1. **Restore NuGet packages:**
-   ```bash
-   dotnet restore
-   ```
-
-2. **Update connection strings in appsettings.json for each service**
-
-3. **Run database migrations:**
-   ```bash
-   # Navigate to each service and run migrations
-   cd src/Services/UrlShortener.UrlService
-   dotnet ef database update
-   
-   cd ../UrlShortener.AnalyticsService
-   dotnet ef database update
-   
-   cd ../UrlShortener.UserService
-   dotnet ef database update
-   ```
-
-4. **Start services individually:**
-   ```bash
-   # Terminal 1 - URL Service
-   cd src/Services/UrlShortener.UrlService
-   dotnet run
-   
-   # Terminal 2 - Analytics Service
-   cd src/Services/UrlShortener.AnalyticsService
-   dotnet run
-   
-   # Terminal 3 - User Service
-   cd src/Services/UrlShortener.UserService
-   dotnet run
-   
-   # Terminal 4 - API Gateway
-   cd src/ApiGateway/UrlShortener.Gateway
-   dotnet run
-   
-   # Terminal 5 - Web App
-   cd src/Web/UrlShortener.WebApp
-   dotnet run
-   ```
-
-## API Endpoints
-
-### Through API Gateway (Port 5000)
-
-#### URL Operations
-- `POST /api/urls/shorten` - Create shortened URL
-- `GET /api/urls/{shortCode}` - Get original URL
-- `GET /api/urls/user/{userId}` - Get user's URLs
-
-#### Analytics
-- `POST /api/analytics/track` - Track URL click
-- `GET /api/analytics/stats/{shortCode}` - Get URL statistics
-
-#### User Management
-- `POST /api/users/register` - Register new user
-- `POST /api/users/login` - User login
-- `GET /api/users/profile` - Get user profile
-
-## Configuration
-
-### Environment Variables
-- `ConnectionStrings__DefaultConnection` - Database connection string
-- `ConnectionStrings__Redis` - Redis connection string
-- `JwtSettings__Key` - JWT signing key
-- `JwtSettings__Issuer` - JWT issuer
-- `JwtSettings__Audience` - JWT audience
-
-### Database
-Each service has its own database:
-- `UrlShortenerDB` - URL Service
-- `UrlShortenerAnalyticsDB` - Analytics Service
-- `UrlShortenerUserDB` - User Service
-- `UrlShortenerWebDB` - Web Application
-
-## Development
-
-### Adding New Features
-1. Define contracts in `UrlShortener.Contracts`
-2. Implement business logic in appropriate service
-3. Update API Gateway routing if needed
-4. Add corresponding UI in Web Application
-
-### Testing
-```bash
-# Run all tests
-dotnet test
-
-# Run tests for specific project
-dotnet test tests/UrlShortener.UrlService.Tests
-```
-
-## Deployment
-
-### Production Considerations
-- Configure proper connection strings
-- Set up SSL certificates
-- Configure Redis cluster for caching
-- Set up monitoring and logging
-- Configure load balancers for high availability
-
-### Health Checks
-Each service exposes a `/health` endpoint for monitoring.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
+**Need help?** Check the `Dependencies.txt` file for detailed package information or run the test suite to diagnose issues.

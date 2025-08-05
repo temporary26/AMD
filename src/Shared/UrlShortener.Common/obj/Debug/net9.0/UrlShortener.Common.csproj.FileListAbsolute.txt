@@ -24,3 +24,16 @@ C:\Users\the paperweight\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\
 C:\Users\the paperweight\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\refint\UrlShortener.Common.dll
 C:\Users\the paperweight\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.pdb
 C:\Users\the paperweight\Downloads\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\ref\UrlShortener.Common.dll
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\bin\Debug\net9.0\UrlShortener.Common.deps.json
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\bin\Debug\net9.0\UrlShortener.Common.dll
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\bin\Debug\net9.0\UrlShortener.Common.pdb
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.csproj.AssemblyReference.cache
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.AssemblyInfoInputs.cache
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.AssemblyInfo.cs
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.csproj.CoreCompileInputs.cache
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.sourcelink.json
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.dll
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\refint\UrlShortener.Common.dll
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\UrlShortener.Common.pdb
+C:\Users\the paperweight\Desktop\AMD\src\Shared\UrlShortener.Common\obj\Debug\net9.0\ref\UrlShortener.Common.dll

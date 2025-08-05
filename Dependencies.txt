@@ -1,0 +1,39 @@
+REQUIRED DEPENDENCIES:
+
+1. .NET 8 SDK
+   - Version: 8.0 or later
+
+2. Node.js
+   - Version: 18.x or later 
+
+3. SQL Server LocalDB 2022
+- Download: https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver17
+
+.NET PACKAGES (Installed automatically via setup. Please install manually if setup fails):
+
+Backend packages (automatically restored when do a "dotnet restore"):
+- Microsoft.EntityFrameworkCore
+- Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Tools
+- Microsoft.AspNetCore.App
+- Ocelot (API Gateway)
+- Microsoft.Extensions.Diagnostics.HealthChecks
+- Swashbuckle.AspNetCore (Swagger)
+
+FRONTEND PACKAGES (Installed automatically via setup):
+npm packages (automatically installed):
+- vue@^3.4.0 
+- vite@^5.0.0 
+- @vitejs/plugin-vue
+- axios 
+
+PORTS USED BY APPLICATION:
+- Frontend (Vue.js): 3000
+- API Gateway: 5000
+- URL Service: 5001
+- Analytics Service: 5002
+- User Service: 5003
+
+Ensure these ports are not in use by other applications.
+
+Thank you!

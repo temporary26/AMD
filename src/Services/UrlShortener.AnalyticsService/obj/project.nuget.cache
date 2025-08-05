@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GCrpn22/oHU=",
+  "dgSpecHash": "B7YX4fzWrZM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj",
+  "projectFilePath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\the paperweight\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\the paperweight\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

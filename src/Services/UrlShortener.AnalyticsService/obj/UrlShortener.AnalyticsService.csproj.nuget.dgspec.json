@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj": {}
+    "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj": {
+    "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj",
+        "projectUniqueName": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj",
         "projectName": "UrlShortener.AnalyticsService",
-        "projectPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj",
+        "projectPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\UrlShortener.AnalyticsService.csproj",
         "packagesPath": "C:\\Users\\the paperweight\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\obj\\",
+        "outputPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Services\\UrlShortener.AnalyticsService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj": {
-                "projectPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj"
+              "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj": {
+                "projectPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj"
               },
-              "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {
-                "projectPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj"
+              "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {
+                "projectPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj"
               }
             }
           }
@@ -95,14 +95,14 @@
         }
       }
     },
-    "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj": {
+    "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj",
+        "projectUniqueName": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj",
         "projectName": "UrlShortener.Common",
-        "projectPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj",
+        "projectPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Common\\UrlShortener.Common.csproj",
         "packagesPath": "C:\\Users\\the paperweight\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Common\\obj\\",
+        "outputPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -182,14 +182,14 @@
         }
       }
     },
-    "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {
+    "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
         "projectName": "UrlShortener.Contracts",
-        "projectPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
+        "projectPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Contracts\\UrlShortener.Contracts.csproj",
         "packagesPath": "C:\\Users\\the paperweight\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\the paperweight\\Downloads\\AMD\\src\\Shared\\UrlShortener.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\the paperweight\\Desktop\\AMD\\src\\Shared\\UrlShortener.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
