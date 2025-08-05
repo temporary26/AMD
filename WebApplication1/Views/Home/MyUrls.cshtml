@@ -1,0 +1,124 @@
+@model List<WebApplication1.Models.DTOs.ShortenedUrlResponse>
+@{
+    ViewData["Title"] = "My URLs";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><i class="fas fa-list"></i> My URLs</h1>
+                <a asp-action="Index" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create New Short URL
+                </a>
+            </div>
+
+            @if (Model.Any())
+            {
+                <div class="row">
+                    @foreach (var url in Model)
+                    {
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title text-truncate" title="@url.OriginalUrl">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        @(url.OriginalUrl.Length > 30 ? url.OriginalUrl.Substring(0, 30) + "..." : url.OriginalUrl)
+                                    </h6>
+                                    
+                                    <div class="mb-2">
+                                        <small class="text-muted">Short Code:</small>
+                                        <code>@url.ShortCode</code>
+                                    </div>
+                                    
+                                    <div class="mb-2">
+                                        <small class="text-muted">Short URL:</small>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control form-control-sm" 
+                                                   value="@url.ShortUrl" readonly id="url-@url.Id">
+                                            <button class="btn btn-outline-secondary btn-sm" type="button" 
+                                                    onclick="copyUrlToClipboard('@url.Id')">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-2">
+                                        <small class="text-muted">
+                                            <i class="fas fa-mouse-pointer"></i> @url.ClickCount clicks
+                                        </small>
+                                    </div>
+                                    
+                                    <div class="mb-2">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar"></i> Created: @url.CreatedAt.ToString("MMM dd, yyyy")
+                                        </small>
+                                    </div>
+                                    
+                                    @if (url.ExpiresAt.HasValue)
+                                    {
+                                        <div class="mb-2">
+                                            <small class="text-muted">
+                                                <i class="fas fa-clock"></i> Expires: @url.ExpiresAt.Value.ToString("MMM dd, yyyy")
+                                            </small>
+                                        </div>
+                                    }
+                                    
+                                    <div class="mb-2">
+                                        <span class="badge bg-@(url.IsActive ? "success" : "danger")">
+                                            @(url.IsActive ? "Active" : "Inactive")
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="btn-group w-100" role="group">
+                                        <a href="@url.ShortUrl" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-external-link-alt"></i> Visit
+                                        </a>
+                                        <a asp-action="Statistics" asp-route-shortCode="@url.ShortCode" 
+                                           class="btn btn-sm btn-outline-info">
+                                            <i class="fas fa-chart-bar"></i> Stats
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-link fa-3x text-muted mb-3"></i>
+                    <h3 class="text-muted">No URLs yet</h3>
+                    <p class="text-muted">Create your first short URL to get started!</p>
+                    <a asp-action="Index" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Create Short URL
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyUrlToClipboard(urlId) {
+        const urlInput = document.getElementById('url-' + urlId);
+        urlInput.select();
+        urlInput.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(urlInput.value).then(function() {
+            // Show temporary success message
+            const copyBtn = event.target;
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+            copyBtn.classList.remove('btn-outline-secondary');
+            copyBtn.classList.add('btn-success');
+            
+            setTimeout(function() {
+                copyBtn.innerHTML = originalText;
+                copyBtn.classList.remove('btn-success');
+                copyBtn.classList.add('btn-outline-secondary');
+            }, 2000);
+        });
+    }
+</script>

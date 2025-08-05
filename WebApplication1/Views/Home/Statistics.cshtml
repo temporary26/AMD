@@ -1,0 +1,194 @@
+@model WebApplication1.Models.DTOs.UrlStatisticsResponse
+@{
+    ViewData["Title"] = "URL Statistics";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1><i class="fas fa-chart-bar"></i> URL Statistics</h1>
+                <a asp-action="Index" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create New Short URL
+                </a>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-info-circle"></i> URL Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-3"><strong>Original URL:</strong></div>
+                                <div class="col-md-9">
+                                    <a href="@Model.OriginalUrl" target="_blank" class="text-break">@Model.OriginalUrl</a>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-3"><strong>Short URL:</strong></div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="shortUrl" value="@Model.ShortUrl" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard()">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-3"><strong>Short Code:</strong></div>
+                                <div class="col-md-9"><code>@Model.ShortCode</code></div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-3"><strong>Created:</strong></div>
+                                <div class="col-md-9">@Model.CreatedAt.ToString("MMMM dd, yyyy 'at' HH:mm")</div>
+                            </div>
+                            @if (Model.ExpiresAt.HasValue)
+                            {
+                                <div class="row mb-3">
+                                    <div class="col-md-3"><strong>Expires:</strong></div>
+                                    <div class="col-md-9">@Model.ExpiresAt.Value.ToString("MMMM dd, yyyy 'at' HH:mm")</div>
+                                </div>
+                            }
+                            <div class="row mb-3">
+                                <div class="col-md-3"><strong>Status:</strong></div>
+                                <div class="col-md-9">
+                                    <span class="badge bg-@(Model.IsActive ? "success" : "danger") fs-6">
+                                        @(Model.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-mouse-pointer"></i> Click Statistics</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="display-4 text-primary mb-2">@Model.TotalClicks</div>
+                            <p class="text-muted">Total Clicks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.RecentClicks.Any())
+            {
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-history"></i> Recent Clicks</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th><i class="fas fa-calendar"></i> Date & Time</th>
+                                                <th><i class="fas fa-globe"></i> IP Address</th>
+                                                <th><i class="fas fa-desktop"></i> User Agent</th>
+                                                <th><i class="fas fa-map-marker-alt"></i> Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var click in Model.RecentClicks.Take(20))
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <small>@click.ClickedAt.ToString("MMM dd, yyyy")</small><br>
+                                                        <small class="text-muted">@click.ClickedAt.ToString("HH:mm:ss")</small>
+                                                    </td>
+                                                    <td>
+                                                        <code>@(click.IpAddress ?? "Unknown")</code>
+                                                    </td>
+                                                    <td>
+                                                        <small title="@click.UserAgent">
+                                                            @if (!string.IsNullOrEmpty(click.UserAgent))
+                                                            {
+                                                                @(click.UserAgent.Length > 50 ? click.UserAgent.Substring(0, 50) + "..." : click.UserAgent)
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-muted">Unknown</span>
+                                                            }
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        @if (!string.IsNullOrEmpty(click.City) || !string.IsNullOrEmpty(click.Country))
+                                                        {
+                                                            <small>
+                                                                @if (!string.IsNullOrEmpty(click.City))
+                                                                {
+                                                                    @click.City
+                                                                    @if (!string.IsNullOrEmpty(click.Country))
+                                                                    {
+                                                                        <text>, </text>
+                                                                    }
+                                                                }
+                                                                @click.Country
+                                                            </small>
+                                                        }
+                                                        else
+                                                        {
+                                                            <small class="text-muted">Unknown</small>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                @if (Model.RecentClicks.Count > 20)
+                                {
+                                    <div class="text-center mt-3">
+                                        <small class="text-muted">Showing latest 20 clicks out of @Model.TotalClicks total</small>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="text-center py-5">
+                            <i class="fas fa-mouse-pointer fa-3x text-muted mb-3"></i>
+                            <h3 class="text-muted">No clicks yet</h3>
+                            <p class="text-muted">Share your short URL to start collecting statistics!</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard() {
+        const shortUrlInput = document.getElementById('shortUrl');
+        shortUrlInput.select();
+        shortUrlInput.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(shortUrlInput.value).then(function() {
+            // Show temporary success message
+            const copyBtn = event.target;
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            copyBtn.classList.remove('btn-outline-secondary');
+            copyBtn.classList.add('btn-success');
+            
+            setTimeout(function() {
+                copyBtn.innerHTML = originalText;
+                copyBtn.classList.remove('btn-success');
+                copyBtn.classList.add('btn-outline-secondary');
+            }, 2000);
+        });
+    }
+</script>

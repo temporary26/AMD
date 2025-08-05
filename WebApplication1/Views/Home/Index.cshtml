@@ -1,0 +1,115 @@
+﻿@model WebApplication1.Models.DTOs.CreateShortenedUrlRequest
+@{
+    ViewData["Title"] = "URL Shortener";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header text-center bg-primary text-white">
+                    <h1 class="mb-0"><i class="fas fa-link"></i> URL Shortener</h1>
+                    <p class="mb-0">Transform long URLs into short, manageable links</p>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Success == true && ViewBag.Result != null)
+                    {
+                        var result = ViewBag.Result as WebApplication1.Models.DTOs.ShortenedUrlResponse;
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-check-circle"></i> URL Shortened Successfully!</h4>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3"><strong>Original URL:</strong></div>
+                                <div class="col-md-9">
+                                    <a href="@result.OriginalUrl" target="_blank" class="text-break">@result.OriginalUrl</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-3"><strong>Short URL:</strong></div>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="shortUrl" value="@result.ShortUrl" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard()">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-3"><strong>Short Code:</strong></div>
+                                <div class="col-md-9">
+                                    <code>@result.ShortCode</code>
+                                    <a href="@Url.Action("Statistics", new { shortCode = result.ShortCode })" class="btn btn-sm btn-info ms-2">
+                                        <i class="fas fa-chart-bar"></i> View Statistics
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <form asp-action="Index" method="post">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="OriginalUrl" class="form-label">Enter URL to shorten:</label>
+                            <input asp-for="OriginalUrl" class="form-control form-control-lg" placeholder="https://example.com/very-long-url" />
+                            <span asp-validation-for="OriginalUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label asp-for="CustomCode" class="form-label">Custom Code (optional):</label>
+                                <input asp-for="CustomCode" class="form-control" placeholder="mycustomcode" maxlength="50" />
+                                <div class="form-text">Leave empty for auto-generated code</div>
+                                <span asp-validation-for="CustomCode" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="ExpiresAt" class="form-label">Expiration Date (optional):</label>
+                                <input asp-for="ExpiresAt" type="datetime-local" class="form-control" />
+                                <div class="form-text">Leave empty for permanent link</div>
+                                <span asp-validation-for="ExpiresAt" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-magic"></i> Shorten URL
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="text-center mt-4">
+                    <a asp-action="MyUrls" class="btn btn-outline-primary">
+                        <i class="fas fa-list"></i> View My URLs
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard() {
+        const shortUrlInput = document.getElementById('shortUrl');
+        shortUrlInput.select();
+        shortUrlInput.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(shortUrlInput.value).then(function() {
+            // Show temporary success message
+            const copyBtn = event.target;
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            copyBtn.classList.remove('btn-outline-secondary');
+            copyBtn.classList.add('btn-success');
+            
+            setTimeout(function() {
+                copyBtn.innerHTML = originalText;
+                copyBtn.classList.remove('btn-success');
+                copyBtn.classList.add('btn-outline-secondary');
+            }, 2000);
+        });
+    }
+</script>
