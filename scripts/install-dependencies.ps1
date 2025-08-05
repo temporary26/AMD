@@ -3,16 +3,17 @@
 
 Write-Host "Installing Dependencies..." -ForegroundColor Cyan
 
-# Check if .NET 8 SDK is installed
+# Check if .NET SDK is installed (8.0 or higher)
 try {
     $dotnetVersion = dotnet --version 2>$null
-    if ($dotnetVersion -like "8.*") {
-        Write-Host ".NET 8 SDK already installed: $dotnetVersion" -ForegroundColor Green
+    $versionMajor = [int]($dotnetVersion.Split('.')[0])
+    if ($versionMajor -ge 8) {
+        Write-Host ".NET SDK already installed: $dotnetVersion (compatible with .NET 8+)" -ForegroundColor Green
     } else {
-        throw "Wrong version"
+        throw "Version too old"
     }
 } catch {
-    Write-Host ".NET 8 SDK not found. Please install it from: https://dotnet.microsoft.com/download/dotnet/8.0" -ForegroundColor Red
+    Write-Host ".NET SDK not found or version is too old. Please install .NET 8 or higher from: https://dotnet.microsoft.com/download" -ForegroundColor Red
     exit 1
 }
 
