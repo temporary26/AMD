@@ -16,11 +16,6 @@ This will install all dependencies and packages automatically.
 ```
 This will build the solution and start all web services.
 
-### Testing the API
-```powershell
-.\test.ps1
-```
-This will run comprehensive API tests to verify everything is working correctly.
 
 ## 📋 Prerequisites
 
@@ -91,12 +86,6 @@ Ensure the following ports are available:
 - **5002** - Analytics Service
 - **5003** - User Service
 
-## 🚦 Usage
-
-1. After running `start.ps1`, visit [http://localhost:3000](http://localhost:3000) to access the web interface
-2. Use the API endpoints via the gateway at [http://localhost:5000](http://localhost:5000)
-3. Access Swagger documentation for individual services
-
 ## 📁 Project Structure
 
 ```
@@ -126,17 +115,5 @@ Ensure the following ports are available:
 - Run `test.ps1` to verify all services are responding
 - Check individual service logs
 - Ensure SQL Server LocalDB is running
-
-## 🤝 Contributing
-
-1. Ensure all services pass the test suite (`test.ps1`)
-2. Follow the existing code structure and conventions
-3. Update documentation as needed
-
-## 📄 License
-
-This project is part of the AMD repository.
-
----
 
 **Need help?** Check the `Dependencies.txt` file for detailed package information or run the test suite to diagnose issues.
