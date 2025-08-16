@@ -9,6 +9,7 @@ A modern, microservices-based URL shortener application built with .NET 8 and Vu
 .\setup.ps1
 ```
 This will install all dependencies and packages automatically.
+If the starting script returns error, please try "dotnet tool install --global dotnet-ef"
 
 ### Running the Application
 ```powershell
